@@ -6,23 +6,31 @@ A fast, clean multi-user app for creating and sharing recommendation packs for d
 
 ---
 
+## Status
+
+The app is **offline-ready**.  
+It runs immediately with no Supabase keys, no backend, and no configuration.
+
+Just open it and it works.
+
+---
+
 ## What it is
 
 Visit lets anyone:
 
-- Sign in with Apple
 - Create recommendation packs for any place or occasion
-- Organize places into three clear pillars
-- Share a clean link with friends
+- Organize places into three clear pillars (Activities / Eating / Sightseeing)
+- Share a clean link or text with friends
 - Open packs that others have shared
 
-The included Tokyo pack is simply a high-quality **example** of content. The product is the system itself.
+The included Tokyo pack is a high-quality **example** of content. The product is the system itself.
 
 ---
 
 ## Design
 
-Liquid Glass aesthetic throughout — frosted materials, soft depth, continuous corners, calm hierarchy.
+Liquid Glass aesthetic — frosted materials, soft depth, continuous corners, calm hierarchy.
 
 ---
 
@@ -30,6 +38,7 @@ Liquid Glass aesthetic throughout — frosted materials, soft depth, continuous 
 
 ```
 Visit/
+├── Package.swift
 ├── VisitShared/                 # Shared across iOS + macOS
 │   ├── Models.swift
 │   ├── Theme.swift
@@ -52,24 +61,35 @@ Visit/
 
 ---
 
-## Features
+## How to run
 
-- Sign in with Apple (Supabase-ready)
-- Create and manage packs
-- Three pillars: Activities / Eating / Sightseeing
-- Share codes + native share sheet
-- Discover packs by code
-- Example high-quality occasion pack included
-- Native on both iOS and macOS
+### Option A – Fastest (Xcode)
+1. Clone the repo
+2. Create a new Multiplatform App in Xcode
+3. Add the `VisitShared` folder to the project
+4. Set `RootView()` as the main content
+5. Run on iOS Simulator or Mac
+
+### Option B – Swift Package
+```bash
+git clone https://github.com/gotmyvanson62/Visit.git
+cd Visit
+open Package.swift
+```
+
+The app starts with a signed-in demo user and the Tokyo example pack already loaded.
 
 ---
 
-## Setup
+## Later: Connect Supabase (optional)
+
+When you want real multi-user sync:
 
 1. Create a free Supabase project
 2. Run `supabase/schema.sql`
-3. Replace the placeholder URL and anon key in `AuthService.swift` and `PackService.swift`
-4. Open in Xcode and run
+3. Replace the placeholder logic in `AuthService` and `PackService` with the real Supabase client
+
+Until then, everything works fully offline.
 
 ---
 
